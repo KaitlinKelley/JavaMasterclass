@@ -5,8 +5,49 @@ public class SampleExercises {
 //        System.out.println(areEqualByThreeDecimalPlaces(3.175, 3.176));
 //        System.out.println(areEqualByThreeDecimalPlaces(3.0, 3.0));
 //        System.out.println(areEqualByThreeDecimalPlaces(-3.123, 3.123));
-        printDayOfTheWeek(3);
-        printDayOfTheWeek(13);
+//        printDayOfTheWeek(3);
+//        printDayOfTheWeek(13);
+
+//        findPrimesInRange(200, 300);
+
+//        int sum = 0;
+//        int count = 0;
+//
+//        for(int i = 1; i <= 1000; i++){
+//            if((i % 3 == 0) && (i % 5 == 0)){
+//                count++;
+//                sum+=i;
+//                System.out.println(i);
+//            }
+//
+//            if(count == 5){
+//                break;
+//            }
+//        }
+//
+//        System.out.println("Sum: " + sum);
+
+        int number = 4;
+        int finishNumber = 20;
+        int numOfEvens = 0;
+
+        while(number <= finishNumber){
+            number++;
+            if(!isEvenNumber(number)){
+                continue;
+            }else{
+                numOfEvens++;
+            }
+
+            System.out.println("Even number: " + number);
+            System.out.println("Current count of evens: " + numOfEvens);
+            System.out.println("-------------------------------");
+
+            if(numOfEvens >= 5){
+                break;
+            }
+        }
+
     }
 
     //Speed Converter==============================================
@@ -172,6 +213,136 @@ public class SampleExercises {
                 break;
         }
     }
+
+    public static void printNumberInWord(int number){
+        switch(number){
+            case 0:
+                System.out.println("ZERO");
+                break;
+            case 1:
+                System.out.println("ONE");
+                break;
+            case 2:
+                System.out.println("TWO");
+                break;
+            case 3:
+                System.out.println("THREE");
+                break;
+            case 4:
+                System.out.println("FOUR");
+                break;
+            case 5:
+                System.out.println("FIVE");
+                break;
+            case 6:
+                System.out.println("SIX");
+                break;
+            case 7:
+                System.out.println("SEVEN");
+                break;
+            case 8:
+                System.out.println("EIGHT");
+                break;
+            case 9:
+                System.out.println("NINE");
+                break;
+            default:
+                System.out.println("OTHER");
+                break;
+
+        }
+    }
+
+    //Number of Days in Month===================================
+    public static int getDaysInMonth(int month, int year){
+        if(month < 1 || month > 12 || year < 1 || year > 9999){
+            return -1;
+        }
+
+        int days = 0;
+
+        switch(month){
+            case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                days = 31;
+                break;
+            case 2:
+                if(isLeapYear(year)){
+                    days = 29;
+                }else{
+                    days = 28;
+                }
+                break;
+            case 4: case 6: case 9: case 11:
+                days = 30;
+                break;
+        }
+
+        return days;
+    }
+
+
+    //Prime Numbers==================================================
+    public static boolean isPrime(int n){
+
+        if(n == 1){
+            return false;
+        }
+
+        for(int i=2; i<= (long) Math.sqrt(n); i++){
+            if(n % i == 0){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static void findPrimesInRange(int num1, int num2){
+
+        int numOfPrimes = 0;
+
+        for(int i=num1; i<=num2; i++){
+            if(isPrime(i)){
+                System.out.println(i);
+                numOfPrimes++;
+            }
+        }
+
+        System.out.println("Found  " + numOfPrimes + " prime numbers");
+
+    }
+
+    //Sum Odd===================================================
+
+    public static boolean isOdd(int number){
+        if(number <= 0){
+            return false;
+        }
+        if(number % 2 == 0){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public static int sumOdd(int start, int end){
+        if(start > end || start <= 0 || end <= 0){
+            return -1;
+        }
+        int sum = 0;
+        for(int i = start; i <= end; i++){
+            if(isOdd(i)){
+                sum += i;
+            }
+        }
+        return sum;
+    }
+
+    public static boolean isEvenNumber(int num){
+        return num % 2 == 0;
+    }
+
+
 
 
 
