@@ -1,52 +1,25 @@
 public class SampleExercises {
 
     public static void main(String[] args) {
-//        System.out.println(areEqualByThreeDecimalPlaces(-3.1756, -3.175));
-//        System.out.println(areEqualByThreeDecimalPlaces(3.175, 3.176));
-//        System.out.println(areEqualByThreeDecimalPlaces(3.0, 3.0));
-//        System.out.println(areEqualByThreeDecimalPlaces(-3.123, 3.123));
-//        printDayOfTheWeek(3);
-//        printDayOfTheWeek(13);
 
-//        findPrimesInRange(200, 300);
 
-//        int sum = 0;
-//        int count = 0;
-//
-//        for(int i = 1; i <= 1000; i++){
-//            if((i % 3 == 0) && (i % 5 == 0)){
-//                count++;
-//                sum+=i;
-//                System.out.println(i);
-//            }
-//
-//            if(count == 5){
-//                break;
-//            }
-//        }
-//
-//        System.out.println("Sum: " + sum);
+//        System.out.println(reverse(-121));
+//        System.out.println(reverse(1212));
+//        System.out.println(reverse(1234));
+//        System.out.println(reverse(100));
 
-        int number = 4;
-        int finishNumber = 20;
-        int numOfEvens = 0;
+//        System.out.println(getDigitCount(123));
+//        System.out.println(getDigitCount(1234));
+//        System.out.println(getDigitCount(0));
+//        System.out.println(getDigitCount(-12));
+//        System.out.println(getDigitCount(123412));
 
-        while(number <= finishNumber){
-            number++;
-            if(!isEvenNumber(number)){
-                continue;
-            }else{
-                numOfEvens++;
-            }
+        System.out.println(reverse(-2));
+        numberToWords(0);
+        numberToWords(-100);
 
-            System.out.println("Even number: " + number);
-            System.out.println("Current count of evens: " + numOfEvens);
-            System.out.println("-------------------------------");
 
-            if(numOfEvens >= 5){
-                break;
-            }
-        }
+
 
     }
 
@@ -340,6 +313,279 @@ public class SampleExercises {
 
     public static boolean isEvenNumber(int num){
         return num % 2 == 0;
+    }
+
+    //Digit Sum
+    public static int sumDigits(int num){
+        if(num <= 9){
+            return -1;
+        }
+
+        int sum = 0;
+
+        while(num > 0){
+            //extract the least significant digit
+            //repeatedly add the least significant digit to the sum
+            int digit = num % 10;
+            sum += digit;
+            //divide the num by 10 to then drop the least significant digit
+            num /= 10;
+        }
+        return sum;
+    }
+
+    //Palindrome Checker
+    public static boolean isPalindrome(int number){
+        if(number < 0){
+            number *= -1;
+        }
+
+        int revNum = 0;
+        int origNum = number;
+
+        while(number > 0){
+            int digit = number % 10;
+            revNum += digit;
+            revNum *= 10;
+            number /= 10;
+
+            if(number < 10){
+                revNum += number;
+                break;
+            }
+        }
+
+        return (origNum == revNum);
+    }
+
+    //First and Last Digit Sum
+    public static int sumFirstAndLastDigit(int number){
+        if(number < 0){
+            return -1;
+        }
+
+        int lastDigit = number % 10;
+
+        while(number >= 10){
+            number /= 10;
+        }
+
+        int firstDigit = number;
+
+        return lastDigit + firstDigit;
+    }
+
+    //Even Digit Sum
+    public static int getEvenDigitSum(int num){
+        if(num < 0){
+            return -1;
+        }
+
+        int sum = 0;
+
+        while(num > 0){
+            int digit = num % 10;
+
+            if(digit % 2 == 0){
+                sum += digit;
+            }
+            num /= 10;
+        }
+        return sum;
+    }
+
+    //Shared Digit
+    public static boolean hasSharedDigit(int num1, int num2){
+        if(num1 < 10 || num1 > 99 || num2 < 10 || num2 > 99){
+            return false;
+        }
+
+        int lastDigNum1 = num1 % 10;
+        int firstDigNum1 = num1 / 10;
+
+        int lastDigNum2 = num2 % 10;
+        int firstDigNum2 = num2 / 10;
+
+        return firstDigNum1 == firstDigNum2
+                || firstDigNum1 == lastDigNum2
+                || lastDigNum1 == firstDigNum2
+                || lastDigNum1 == lastDigNum2;
+    }
+
+    //Last Digit Checker
+    public static boolean hasSameLastDigit(int num1, int num2, int num3){
+        if(!isValid(num1) || !isValid(num2) || !isValid(num3)){
+            return false;
+        }
+
+        int lastDigNum1 = num1 % 10;
+        int lastDigNum2 = num2 % 10;
+        int lastDigNum3 = num3 % 10;
+
+        return lastDigNum1 == lastDigNum2
+                || lastDigNum1 == lastDigNum3
+                || lastDigNum2 == lastDigNum3;
+    }
+
+    public static boolean isValid(int num){
+        return num >= 10 && num <= 1000;
+    }
+
+    //Greatest Common Divisor
+    public static int getGreatestCommonDivisor(int first, int second){
+        if(first < 10 || second < 10){
+            return -1;
+        }
+        int gcd = 1;
+        int smallerNum;
+        if(first < second){
+            smallerNum = first;
+        }else{
+            smallerNum = second;
+        }
+
+        for(int i = 1; i <= smallerNum; i++){
+            if(first % i == 0 && second % i == 0){
+                gcd = i;
+            }
+        }
+
+        return gcd;
+    }
+
+    public static void printFactors(int number){
+        if(number < 1){
+            System.out.println("Invalid Value");
+        }
+
+        for(int i = 1; i <= number; i++){
+            if(number % i == 0){
+                System.out.println(i);
+            }
+        }
+    }
+
+    public static boolean isPerfectNumber(int number){
+        if(number < 1){
+            return false;
+        }
+        int sum = 0;
+
+        for(int i = 1; i <= number/2; i++){
+            if(number % i == 0){
+                sum += i;
+            }
+        }
+        return sum == number;
+    }
+
+    //Number to Words====================================
+    public static void numberToWords(int number){
+
+        int newNum = reverse(number);
+        int origDigCount = getDigitCount(number);
+        int newDigCount = getDigitCount(newNum);
+
+        while(newNum > 0){
+            int digit = newNum % 10;
+            switch(digit){
+                case 0:
+                    System.out.println("Zero");
+                    newNum/=10;
+                    break;
+                case 1:
+                    System.out.println("One");
+                    newNum/=10;
+                    break;
+                case 2:
+                    System.out.println("Two");
+                    newNum/=10;
+                    break;
+                case 3:
+                    System.out.println("Three");
+                    newNum/=10;
+                    break;
+                case 4:
+                    System.out.println("Four");
+                    newNum/=10;
+                    break;
+                case 5:
+                    System.out.println("Five");
+                    newNum/=10;
+                    break;
+                case 6:
+                    System.out.println("Six");
+                    newNum/=10;
+                    break;
+                case 7:
+                    System.out.println("Seven");
+                    newNum/=10;
+                    break;
+                case 8:
+                    System.out.println("Eight");
+                    newNum/=10;
+                    break;
+                case 9:
+                    System.out.println("Nine");
+                    newNum/=10;
+                    break;
+            }
+        }
+
+        if(origDigCount != newDigCount){
+            int digDiff = origDigCount - newDigCount;
+            for(int i = 1; i <= digDiff; i++){
+                System.out.println("Zero");
+            }
+        }
+    }
+
+    public static int reverse(int number){
+
+        if (number >= -9 && number <= 9) {
+            return number;
+        }else {
+
+            int origNum = number;
+
+            if (number < 0) {
+                number *= -1;
+            }
+
+            int revNum = 0;
+
+            while (number > 0) {
+                int digit = number % 10;
+                revNum += digit;
+                revNum *= 10;
+                number /= 10;
+
+                if (number < 10) {
+                    revNum += number;
+                    break;
+                }
+            }
+            if (origNum < 0) {
+                return revNum * -1;
+            } else {
+                return revNum;
+            }
+        }
+    }
+
+    public static int getDigitCount(int number){
+        if(number < 0){
+            return -1;
+        }
+
+        int count = 0;
+
+        do{
+            count++;
+            number /= 10;
+        } while(number > 0);
+
+        return count;
     }
 
 
