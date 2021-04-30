@@ -658,27 +658,21 @@ public class SampleExercises {
     }
 
     //Largest Prime
-
     public static int getLargestPrime(int number){
         if(number < 2){
             return -1;
         }
 
-        int currentPrime = -1;
-
-        for(int j = 2; j <= number; j++){
-            for(int i=2; i<= (long) Math.sqrt(j); i++){
-                if(j % i != 0){
-                    currentPrime = j;
-                }
+        int maxPrime = 2;
+        while(number > maxPrime){
+            if (number % maxPrime == 0){
+                number /= maxPrime;
+                maxPrime = 2;
+            }else{
+                maxPrime++;
             }
         }
-
-
-
-        return currentPrime;
-
-
+        return maxPrime;
     }
 
 
