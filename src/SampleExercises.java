@@ -20,7 +20,9 @@ public class SampleExercises {
 
 //        System.out.println(canPack(2,2,12));
 
-        System.out.println(getLargestPrime(217));
+//        System.out.println(getLargestPrime(217));
+
+        printSquareStar(8);
 
 
 
@@ -673,6 +675,29 @@ public class SampleExercises {
             }
         }
         return maxPrime;
+    }
+
+    //Diagonal Star========================================
+    public static void printSquareStar(int number){
+
+        if(number < 5){
+            System.out.println("Invalid Value");
+        }else {
+
+            String star = "*";
+            String space = " ";
+
+            for (int i = 1; i <= number; i++) {
+                for (int j = 1; j <= number; j++) {
+                    if (i == 1 || i == number || j == 1 || j == number || j == i || j == (number - i + 1)) {
+                        System.out.print(star);
+                    } else {
+                        System.out.print(space);
+                    }
+                }
+                System.out.println();
+            }
+        }
     }
 
 
