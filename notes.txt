@@ -1,0 +1,66 @@
+Class: like a blueprint for a house
+-each house you build(instantiate with "new") is an object known as an instance
+-each house you build has an address/physical location. This is known as a reference (where the object lives in the memory)
+-you can copy that reference as many times as you like but there is still just one house. We are copying the paper that has the address on it, but not the house itself.
+-A variable name that points to an object in memory is a reference
+-We can pass references as parameters to constructors and methods
+-All custom classes automatically extend the Object Class
+
+Super and This
+-super is used to access the parent class members (variables and methods)
+-this is used to call the current class members.
+-this is required when we have a parameter with the same name as an instance variable(field)
+-We can use Super and This anywhere in a class, except in static areas
+-Method Overriding: when we call a method with the same name from the parent class
+-Super is commonly used with method overriding
+-this() to call a constructor from another overloaded constructor in the same class
+-the call to this() can only be used in a constructor, and it must be the first statement in the constructor-->use with constructor chaining, aka when one constructor calls another constructor, helping to reduce duplicated code
+-The call to super() must be the first statement in each constructor
+-A constructor can have a call to super() OR this() but NOT BOTH
+
+Overloading
+-method Overloading means providing two or more separate methods in a class with the same name, but different parameters...return type may or may not be different
+-sometimes referred to as Compile Time Polymorphism (although it has nothing to do with polymorphism) -->compiler decides which method to call based on the name, return type, and arguments
+-we can overload static and instance methods
+-usually occurs in a single class, but may also be used in a child class
+
+Overriding
+-Overriding means defining a method in a child class that already exists in the parent class with the same signature
+-also known as Runtime Polymorphism and Dynamic Method Dispatch, because the JVM decides at runtime which method to call
+-@Override annotation
+-can only override instance methods, not static methods
+-Overridden method must follow these rules:
+    -must have the same name and arguments
+    -return type can be a subclass of the return type in the parent class
+    -canNOT have a lower/stricter access modifier (if the parent method is Protected, then you cannot use Private in the child method)
+    -must not throw a new or broader-checked exception
+-Constructors, private methods, and final methods CANNOT be overridden
+
+Static Methods
+-called as ClassName.methodName()
+-can also be called as methodName() only if in the same class
+-static methods don't require an instance to be created
+
+Instance Method
+-instance methods belong to a specific instance of a class
+-must instantiate the class first
+-can directly access: instance methods and variables, static methods and variables
+
+Static Variables
+-use static keyword
+-aka static member variables
+-every instance of the class will share the same static variable
+-if changes are made to that variable, all other instances will be affected
+-for example, when reading user input using Scanner, we will declare scanner as a static variable, so all static methods can access it directly
+
+Instance Variables
+-known as fields or member variables
+-belong to an instance of a class, not to the entire class
+-every instance has its own copy of an instance variable
+-every instance can have a different value(state)
+-instance variables represent the state of an instance
+
+
+
+
+
