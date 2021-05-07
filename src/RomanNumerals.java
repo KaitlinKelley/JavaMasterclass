@@ -2,35 +2,40 @@ import java.util.ArrayList;
 
 public class RomanNumerals {
     public static void main(String[] args) {
-        System.out.println(tripleDig(562));
-        System.out.println(tripleDig(123));
-        System.out.println(tripleDig(476));
+
     }
 
     public static int numOfDigits(int num){
-        ArrayList<Integer> numAsArray = new ArrayList<Integer>();
+        ArrayList<Integer> numAsArray = new ArrayList<>();
         do{numAsArray.add(num % 10);
             num /= 10;
         }while (num > 0);
         return numAsArray.size();
     }
 
-    public static String convertUpToThree(int num){
+    public static String convertUpTo4999(int num){
+        if(num >= 5000 || num < 0){
+            return "Error!";
+        }
         int numOfDigs = numOfDigits(num);
         if(numOfDigs == 1){
             return singleDig(num);
         }else if(numOfDigs == 2){
             return doubleDig(num);
-        }else{
+        }else if(numOfDigs == 3){
             return tripleDig(num);
+        }else{
+            return quadrupleDig(num);
         }
     }
 
     public static String singleDig(int num){
-        if(num < 1 || num > 9){
+        if(num < 0 || num > 9){
             return "Error";
         }else{
             switch (num) {
+                case 0:
+                    return "";
                 case 1:
                     return "I";
                 case 2:
@@ -106,7 +111,6 @@ public class RomanNumerals {
 
     public static String tripleDig(int num){
         int firstDigit = num / 100;
-        System.out.println("First digit is: " + firstDigit);
 
         String result = "";
 
@@ -143,8 +147,41 @@ public class RomanNumerals {
 
         }
         int remainingDigs = num % 100;
-        System.out.println("Remainder = " + remainingDigs);
-        result += doubleDig(remainingDigs);
+        if(remainingDigs >= 10) {
+            result += doubleDig(remainingDigs);
+        }else{
+            result += singleDig(remainingDigs);
+        }
+        return result;
+    }
+
+    public static String quadrupleDig(int num){
+        int firstDigit = num / 1000;
+        int remainingDigs = num % 1000;
+
+        String result = "";
+
+        switch(firstDigit){
+            case 1:
+                result += "M";
+                break;
+            case 2:
+                result += "MM";
+                break;
+            case 3:
+                result += "MMM";
+                break;
+            case 4:
+                result += "MMMM";
+                break;
+        }
+        if(remainingDigs >= 100){
+            result += tripleDig(remainingDigs);
+        }else if(remainingDigs >= 10) {
+            result += doubleDig(remainingDigs);
+        }else{
+            result += singleDig(remainingDigs);
+        }
         return result;
     }
 
