@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class ArrayPractice {
@@ -7,13 +9,16 @@ public class ArrayPractice {
 
     public static void main(String[] args) {
 
-        int[] myIntegers = getIntegers(5);
+//        int[] myIntegers = getIntegers(5);
 //        for (int i=0; i< myIntegers.length; i++) {
 //            System.out.println("Element " + i + ", typed values was " + myIntegers[i]);
 //        }
 //        System.out.println("The average is " + getAverage(myIntegers));
-        printArray(myIntegers);
-        printArray(sortIntegers(myIntegers));
+//        printArray(myIntegers);
+//        printArray(sortIntegers(myIntegers));
+
+        int[] array = getIntegers(6);
+        printArray(sortIntegers(array));
     }
 
     public static int[] getIntegers(int num){
@@ -28,8 +33,8 @@ public class ArrayPractice {
     }
 
     public static void printArray(int[] array){
-        for(int i:array){
-            System.out.println(i);
+        for(int i = 0; i < array.length; i++){
+            System.out.println("Element " + i + " contents " + array[i]);
         }
     }
 
@@ -61,4 +66,5 @@ public class ArrayPractice {
         }
         return sorted;
     }
+
 }
