@@ -14,66 +14,90 @@ public class Car {
         this.name = name;
     }
 
-    public boolean hasEngine() {
-        return engine;
-    }
-
     public int getCylinders() {
         return cylinders;
-    }
-
-    public int getWheels() {
-        return wheels;
     }
 
     public String getName() {
         return name;
     }
 
-    public void startEngine(){
-        System.out.println("Started engine");
+    public String startEngine(){
+        return getClass().getSimpleName() + " :Engine started";
     }
 
-    public void accelerate(){
-        System.out.println("Accelerating...");
+    public String accelerate(){
+        return getClass().getSimpleName() + " :Accelerating";
     }
 
-    public void brake(){
-        System.out.println("Stopped");
+    public String brake(){
+        return getClass().getSimpleName() + " :Stopped";
     }
 }
 
-class Honda extends Car{
+class Mitsubishi extends Car{
 
-    public Honda(int cylinders, String name) {
+    public Mitsubishi(int cylinders, String name) {
         super(cylinders, name);
     }
 
-    public void startEngine(){
-        System.out.println(this.getName() + ": Started engine");
+    @Override
+    public String startEngine(){
+        return getClass().getSimpleName() + " :Engine started";
     }
 
-    public void accelerate(){
-        System.out.println(this.getName() + ": Accelerating...");
+    @Override
+    public String accelerate(){
+        return getClass().getSimpleName() + " :Accelerating";
     }
 
-    public void brake(){
-        System.out.println(this.getName() + ": Stopped");
+    @Override
+    public String brake(){
+        return getClass().getSimpleName() + " :Stopped";
     }
 }
 
-class Ford extends Car{
+class Ford extends Car {
 
     public Ford(int cylinders, String name) {
         super(cylinders, name);
     }
 
-    public void startEngine(){
-        System.out.println("The ford has started its engine");
+    @Override
+    public String startEngine(){
+        return getClass().getSimpleName() + " :Engine started";
     }
 
-    public void accelerate(){
-        System.out.println("Ford is accelerating...");
+    @Override
+    public String accelerate(){
+        return getClass().getSimpleName() + " :Accelerating";
+    }
+
+    @Override
+    public String brake(){
+        return getClass().getSimpleName() + " :Stopped";
+    }
+}
+
+class Holden extends Car{
+
+    public Holden(int cylinders, String name) {
+        super(cylinders, name);
+    }
+
+    @Override
+    public String startEngine(){
+        return getClass().getSimpleName() + " :Engine started";
+    }
+
+    @Override
+    public String accelerate(){
+        return getClass().getSimpleName() + " :Accelerating";
+    }
+
+    @Override
+    public String brake(){
+        return getClass().getSimpleName() + " :Stopped";
     }
 
 
@@ -82,14 +106,25 @@ class Ford extends Car{
 
 
     public static void main(String[] args) {
-        Honda brian = new Honda(6, "Brian");
-        Ford ford = new Ford(8, "Truck");
-        brian.startEngine();
-        brian.accelerate();
-        brian.brake();
+        Car car = new Car(8, "Car");
+        car.startEngine();
+        car.accelerate();
+        car.brake();
+
+        Mitsubishi mitsubishi = new Mitsubishi(8, "Car");
+        mitsubishi.startEngine();
+        mitsubishi.accelerate();
+        mitsubishi.brake();
+
+        Ford ford = new Ford(8, "Car");
         ford.startEngine();
         ford.accelerate();
         ford.brake();
+
+        Holden holden = new Holden(8, "Car");
+        holden.startEngine();
+        holden.accelerate();
+        holden.brake();
     }
 }
 
