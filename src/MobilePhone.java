@@ -23,7 +23,7 @@ public class MobilePhone {
             System.out.println("Contact is already on file");
             return false;
         }else{
-            addNewContact(contact);
+            this.myContacts.add(contact);
             return true;
         }
     }
@@ -36,16 +36,24 @@ public class MobilePhone {
 //            myContacts.set(myContacts.indexOf(contactToUpdate), newContact);
 //            return true;
 //        }
-        int positionToUpdate = findContact(contactToUpdate);
-        if(positionToUpdate < 0){
-            System.out.println(contactToUpdate.getName() + " was not found");
-            return false;
-        }else if(findContact(newContact.getName()) != -1) {
-            System.out.println("Contact with that name already exists, update not successful");
-            return false;
-        }
-            myContacts.set(positionToUpdate, newContact);
+//        int positionToUpdate = findContact(contactToUpdate);
+//        if(positionToUpdate < 0){
+//            System.out.println(contactToUpdate.getName() + " was not found");
+//            return false;
+//        }else if(findContact(newContact.getName()) != -1) {
+//            System.out.println("Contact with that name already exists, update not successful");
+//            return false;
+//        }
+//            this.myContacts.set(positionToUpdate, newContact);
+//            return true;
+        int position = findContact(contactToUpdate);
+        if (position >= 0) {
+            this.myContacts.set(position, newContact);
             return true;
+        }
+        return false;
+
+
     }
 
     //returns whether or not the contact was successfully removed
@@ -56,18 +64,25 @@ public class MobilePhone {
 //            myContacts.remove(contactToDelete);
 //            return true;
 //        }
-        if(findContact(contactToDelete) < 0){
-            System.out.println("Contact does not exist, cannot delete");
-            return false;
-        }else{
-            myContacts.remove(contactToDelete);
-            System.out.println("Contact deleted");
+//        if(findContact(contactToDelete) < 0){
+//            System.out.println("Contact does not exist, cannot delete");
+//            return false;
+//        }else{
+//            this.myContacts.remove(contactToDelete);
+//            System.out.println("Contact deleted");
+//            return true;
+//        }
+
+        int position = findContact(contactToDelete);
+        if (position != -1) {
+            this.myContacts.remove(contactToDelete);
             return true;
         }
+        return false;
     }
 
     private int findContact(Contact contactToFind){
-        return myContacts.indexOf(contactToFind);
+        return findContact(contactToFind.getName());
     }
 
     private int findContact(String name){
@@ -93,7 +108,7 @@ public class MobilePhone {
 
         int position = findContact(name);
         if(position >= 0){
-            return myContacts.get(position);
+            return this.myContacts.get(position);
         }
         return null;
     }
