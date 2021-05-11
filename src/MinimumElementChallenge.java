@@ -2,14 +2,27 @@ import java.util.Scanner;
 
 public class MinimumElementChallenge {
 
-    public static int[] readIntegers(int num){
-        Scanner sc = new Scanner(System.in);
+    private static Scanner sc = new Scanner(System.in);
+
+    public static int readInteger(){
+        System.out.println("Please enter an integer:");
+        return sc.nextInt();
+    }
+
+    public static int[] readElements(int num){
         System.out.println("Please enter " + num + " integers:");
         int[] array = new int[num];
 
         for(int i=0; i< array.length; i++){
             array[i] = sc.nextInt();
         }
+
+        //OR
+//        for(int i=0; i< array.length; i++){
+//            int number = sc.nextInt();
+//            sc.nextLine();
+//            array[i] = number;
+//        }
 
         return array;
     }
@@ -25,7 +38,9 @@ public class MinimumElementChallenge {
     }
 
     public static void main(String[] args) {
-        int[] myArray = readIntegers(5);
-        System.out.println(findMin(myArray));
+        int count = readInteger();
+        sc.nextLine();
+        int[] myArray = readElements(count);
+        System.out.println("Minimum value was: " + findMin(myArray));
     }
 }
