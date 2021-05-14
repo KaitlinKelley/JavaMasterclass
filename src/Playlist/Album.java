@@ -60,6 +60,7 @@ public class Album {
         System.out.println("3 - replay current song");
         System.out.println("4 - list songs in playlist");
         System.out.println("5 - show menu");
+        System.out.println("6 - delete current song from playlist");
     }
 
     private static void printList(LinkedList<Song> playlist){
@@ -145,6 +146,16 @@ public class Album {
                     break;
                 case 5:
                     printMenu();
+                    break;
+                case 6:
+                    if(playlist.size() > 0){
+                        listIterator.remove();
+                        if(listIterator.hasNext()){
+                            System.out.println("Now playing " + listIterator.next().toString());
+                        }else if(listIterator.hasPrevious()){
+                            System.out.println("Now playing " + listIterator.previous().toString());
+                        }
+                    }
                     break;
             }
         }
