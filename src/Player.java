@@ -134,6 +134,10 @@ public class Player implements ISaveable{
         System.out.println(tim);
 
         Monster werewolf = new Monster("Werewolf", 20, 40);
+
+        //Could also do this! Makes it more generic. But if you want to access methods like getStrength(), you must first cast it to Monster**
+//        ISaveable werewolf = new Monster("Werewolf", 20, 40);
+
         System.out.println(werewolf);
         saveObject(werewolf);
     }
