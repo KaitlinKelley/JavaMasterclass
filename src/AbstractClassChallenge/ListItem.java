@@ -2,19 +2,29 @@ package AbstractClassChallenge;
 
 public abstract class ListItem {
 
-    protected ListItem rightLink;
-    protected ListItem leftLink;
+    protected ListItem rightLink = null;
+    protected ListItem leftLink = null;
     protected Object value;
 
-    public ListItem(Object object){
-        this.value = object;
+    public ListItem(Object value){
+        this.value = value;
     }
 
-    public abstract ListItem next();
-    public abstract ListItem setNext(ListItem item);
-    public abstract ListItem previous();
-    public abstract ListItem setPrevious(ListItem item);
-    public abstract int compareTo(ListItem item);
-    public abstract void getValue();
-    public abstract void setValue(Object obj);
+    abstract ListItem next();
+    abstract ListItem setNext(ListItem item);
+    abstract ListItem previous();
+    abstract ListItem setPrevious(ListItem item);
+
+    abstract int compareTo(ListItem item);
+
+    public Object getValue(){
+        return value;
+    }
+
+    public void setValue(Object value){
+        this.value = value;
+    }
+
+//    abstract void getValue();
+//    abstract void setValue(Object obj);
 }

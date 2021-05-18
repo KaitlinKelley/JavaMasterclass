@@ -2,8 +2,8 @@ package AbstractClassChallenge;
 
 public interface NodeList {
 
-    abstract ListItem getRoot();
-    abstract boolean addItem(ListItem item);
-    abstract boolean removeItem(ListItem item);
-    abstract void traverse(ListItem root);
+    ListItem getRoot();
+    boolean addItem(ListItem item);
+    boolean removeItem(ListItem item);
+    void traverse(ListItem root);
 }
