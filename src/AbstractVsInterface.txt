@@ -1,0 +1,35 @@
+=====Abstract Classes=====
+-similar to interfaces
+-"extends"
+-cannot be directly instantiated
+-may contain a mix of methods declared with or without implementation
+-can declare fields that are not static and final
+-can define public, protected, and private concrete methods
+-can extend only one parent class, but can implement multiple interfaces
+-when an abstract class is subclassed/extended, the subclass usually provides implementations for all of the abstract methods in the parent class....if the subclass doesn't do this, it must also be declared abstract
+-Use an Abstract Class when:
+-->You want to share code among several closely related classes
+-->You expect classes that extend your abstract class to have many common methods, fields, or required access modifiers other than public
+-->You want to declare non-static or non-final fields...this enables you to define methods that can access and modify the state of an object(getName(), setName())
+-->When you have a requirement for your base class to provide a default implementation of certain methods, but other methods need to be open to being overridden by child classes
+SUMMARY:
+-The purpose of an Abstract Class is to provide a common definition of a base class that multiple derived classes can share
+
+=====Interfaces=====
+-just the declaration of methods of a Class, NOT the implementation
+-"implements"
+-we define the kinds of operations an object can perform...these operations are then defined by the classes that implement the interface
+-form a contract between the class and the outside world...this contract is enforced at build time by the compiler
+-cannot be directly instantiated
+-may contain a mix of methods declared with or without implementation
+-all of an interface's methods are automatically public and abstract!
+-An interface can extend another interface!
+-More flexible than abstract classes, can deal with a lot more stress on a program's design that the implementation can
+-By using interfaces, you are introducing points of variation at which you can plug in different implementations for that interface
+-Primary purpose is abstraction, decoupling the "what" from the "how"
+-Since Java 8, interfaces can contain default methods
+-Use an Interface when:
+-->You expect that unrelated classes will implement the interface
+-->You want to specify the behavior of a particular data type, but you are not concerned about who implements its behavior
+-->You want to separate different behavior
+
