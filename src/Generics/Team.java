@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 //This class will now accept any object that is a Player type, or a subclass of Player
 //T can also use interfaces(can extend only one class, but can use multiple interfaces)
-public class Team<T extends Player> {
+public class Team<T extends Player> implements Comparable<Team<T>> {
 
     private String name;
     int played = 0;
@@ -53,7 +53,7 @@ public class Team<T extends Player> {
             message = " lost to ";
         }
         played++;
-        //saving results for opponent as well
+        //saving results for opponent as well, while avoiding infinite loop
         if(opponent != null){
             System.out.println(this.getName() + message + opponent.getName());
             opponent.matchResult(null, theirScore, ourScore);
@@ -62,6 +62,17 @@ public class Team<T extends Player> {
 
     public int ranking(){
         return (won*2) + tied;
+    }
+
+    @Override
+    //Can only compare teams of the same type
+    public int compareTo(Team<T> team) {
+        if(this.ranking() > team.ranking()){
+            return -1;
+        }else if(this.ranking() < team.ranking()){
+            return 1;
+        }
+        return 0;
     }
 
     public static void main(String[] args) {
@@ -88,4 +99,6 @@ public class Team<T extends Player> {
         Team<SoccerPlayer> soccerTeam = new Team<>("Some name");
         soccerTeam.addPlayer(beckham);
     }
+
+
 }
