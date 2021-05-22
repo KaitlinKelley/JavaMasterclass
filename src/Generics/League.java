@@ -1,9 +1,16 @@
 package Generics;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class League <T extends Team>{
+
+    //Type Parameters:
+//    E - Element
+//    K - Key
+    //T - Type
+    //V - Value
+    //S, U, V, etc. - 2nd, 3rd, 4th types
+
 
     private String name;
 
@@ -34,7 +41,7 @@ public class League <T extends Team>{
         League<Team<FootballPlayer>> footballLeague = new League<>("AFL");
         Team<FootballPlayer> adelaideCrows = new Team<>("Adelaide Crows");
         Team<FootballPlayer> melbourne = new Team<>("Melbourne");
-        Team<FootballPlayer> hawthorne = new Team<>("Hawthron");
+        Team<FootballPlayer> hawthorne = new Team<>("Hawthorn");
         Team<FootballPlayer> fremantle = new Team<>("Fremantle");
 
         footballLeague.addTeam(adelaideCrows);
