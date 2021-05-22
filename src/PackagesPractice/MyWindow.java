@@ -1,6 +1,7 @@
 package PackagesPractice;
 
 import java.awt.*;
+//the event package is a subpackage of awt
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -26,5 +27,10 @@ public class MyWindow extends Frame {
         g.drawString("The Complete Java Developer Course", 60, 60);
         g.setFont(sansSerifSmall);
         g.drawString("by Tim Buchalka", 60, 100);
+    }
+
+    public static void main(String[] args) {
+        MyWindow myWindow = new MyWindow("Complete Java");
+        myWindow.setVisible(true);
     }
 }
