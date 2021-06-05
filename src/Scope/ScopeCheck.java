@@ -26,17 +26,24 @@ public class ScopeCheck {
 //            System.out.println(i + " times two is " + i*this.privateVar);
         }
 
+        public void useInner(){
+            InnerClass innerClass = new InnerClass();
+            System.out.println("varThree from outerclass: " + innerClass.varThree);
+        }
+
         //====================================================
+    //InnerClass has complete access to the stuff in its containing class, aka ScopeCheck
         public class InnerClass{
-            public int varThree = 3;
+            private int varThree = 3;
 
             public InnerClass() {
-                System.out.println("InnerClass created, privateVar is " + varThree);
+                System.out.println("InnerClass created, varOne is" + varOne + "varThree is " + varThree);
             }
 
 
             //this method will grab the privateVar from InnerClass, with the value of 3
             public void timesTwo(){
+                System.out.println("varOne is still available here: " + varOne);
                 for(int i=0; i<10; i++){
                     System.out.println(i + " times two is " + i* varThree);
                 }
